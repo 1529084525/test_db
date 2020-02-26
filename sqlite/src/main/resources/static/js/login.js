@@ -47,3 +47,7 @@ document.querySelector('#submit').addEventListener('focus', function(e) {
         }
     });
 });
+
+if($("#hidden").val() != ''){
+    alert("登陆失败");
+}
