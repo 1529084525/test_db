@@ -7,5 +7,26 @@
 <body>
 <input type="text" value="无此用户" th:value="${'Welcome to you! ' + user.getName()}">
 <a href="#" th:href="@{/loginOut}">注销</a>
+<br>
+<h3>注册新用户</h3>
+<div>
+    Email：<input type="email" id="name" name="newUser"/>
+    password：<input type="password" id="pwd" name="newPassword"/>
+    <button id="register" type="button">注册</button>
+</div>
+<table border="1">
+    <tr>
+        <th>序号</th>
+        <th>邮箱</th>
+        <th>密码</th>
+    </tr>
+    <tr th:each="user,index : ${list}">
+        <td th:text="${index.count}"></td>
+        <td th:text="${user.getName()}"></td>
+        <td th:text="${user.getPwd()}"></td>
+    </tr>
+</table>
+<script src="js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="js/index.js" th:src="@{/js/index.js}"></script>
 </body>
 </html>

@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ConcurrentModel;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import test.sqlite.demo.entity.User;
 import test.sqlite.demo.service.UserService;
 
@@ -31,12 +30,25 @@ public class LoginController {
             return "login";
         }
         model.addAttribute("user", user);
+        model.addAttribute("list", userService.findAll());
         return "index";
     }
 
     @GetMapping("/loginOut")
     public String loginOut() {
         return "login";
+    }
+
+    @PostMapping("/checkName")
+    @ResponseBody
+    public String checkName(String name) {
+        return userService.isExist(name) ? "ok" : "no";
+    }
+
+    @PostMapping("/register")
+    @ResponseBody
+    public Integer register(@RequestBody User user) {
+        return userService.register(user);
     }
 
 }

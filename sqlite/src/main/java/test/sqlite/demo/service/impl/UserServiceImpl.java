@@ -10,6 +10,8 @@ import test.sqlite.demo.dao.UserDao;
 import test.sqlite.demo.entity.User;
 import test.sqlite.demo.service.UserService;
 
+import java.util.List;
+
 /**
  * @Author ZhiXiang
  * @create 2020/2/26 11:41
@@ -27,5 +29,20 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
         return !StringUtils.isEmpty(userDao.selectOne(new QueryWrapper<User>()
                 .eq("name", user.getName())
                 .eq("pwd", user.getPwd())));
+    }
+
+    @Override
+    public Boolean isExist(String name) {
+        return !StringUtils.isEmpty(userDao.selectOne(new QueryWrapper<User>().eq("name", name)));
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userDao.selectList(null);
+    }
+
+    @Override
+    public Integer register(User user) {
+        return userDao.insert(user);
     }
 }
