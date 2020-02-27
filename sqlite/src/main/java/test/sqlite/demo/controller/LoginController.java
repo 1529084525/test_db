@@ -47,8 +47,15 @@ public class LoginController {
 
     @PostMapping("/register")
     @ResponseBody
-    public Integer register(@RequestBody User user) {
+    public Integer register(User user) {
         return userService.register(user);
+    }
+
+    @GetMapping("/login")
+    public String login(Model model){
+        model.addAttribute("user", null);
+        model.addAttribute("list", userService.findAll());
+        return "index";
     }
 
 }

@@ -18,13 +18,13 @@ $("#register").click(function () {
                             url: '/register',
                             type: 'post',
                             data: {
-                                name: name,
-                                pwd: pwd,
+                                'name': name,
+                                'pwd': pwd
                             },
                             success: function (data) {
                                 if(data > 0) {
                                     alert("注册成功");
-                                    location.href =  'login';
+                                    location.href =  '/login';
                                 }else{
                                     alert("注册失败");
                                 }
