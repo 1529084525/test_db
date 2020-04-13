@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sqlite:war">
+    <output-path>$PROJECT_DIR$/sqlite/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>sqlite</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="db-test.war">
+      <element id="artifact" artifact-name="sqlite:war exploded" />
+    </root>
+  </artifact>
+</component>
